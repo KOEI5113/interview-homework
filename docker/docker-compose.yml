@@ -1,10 +1,17 @@
 services:
   app:
-    image: php:8.2-fpm
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: laravel_app
     working_dir: /var/www
     volumes:
       - ../laravel-app:/var/www
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_DATABASE=laravel
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
     networks:
       - laravel
 
