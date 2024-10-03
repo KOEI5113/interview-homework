@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\OrderCreateEvent;
-use App\Exceptions\OrderNumberDuplicatedException;
+use App\Exceptions\OrderIdDuplicatedException;
 use App\Http\Requests\ShowOrderRequest;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Resources\OrderResource;
@@ -21,9 +21,9 @@ class OrderController extends Controller
     ): JsonResponse
     {
         $validated = $StoreOrderRequest->validated();
-        $Order = $OrderService->getByOrderNumber($validated["id"]);
+        $Order = $OrderService->get($validated["id"]);
         if (!is_null($Order)) {
-            throw OrderNumberDuplicatedException::make("訂單編號已經存在");
+            throw OrderIdDuplicatedException::make("訂單編號已經存在");
         }
         OrderCreateEvent::dispatch($validated);
         return response()->json();
@@ -37,6 +37,6 @@ class OrderController extends Controller
         OrderService $OrderService
     ): JsonResponse
     {
-        return response()->json(new OrderResource($OrderService->getByOrderNumber($ShowOrderRequest->validated()["order"])));
+        return response()->json(new OrderResource($OrderService->get($ShowOrderRequest->validated()["order"])));
     }
 }

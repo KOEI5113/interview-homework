@@ -37,8 +37,8 @@ class OrderService
         return $Order;
     }
 
-    public function getByOrderNumber(string $orderNumber): ?Order
+    public function get(string $id): ?Order
     {
-        return $this->OrderRepository->getByOrderNumber($orderNumber);
+        return $this->OrderRepository->get($id);
     }
 }

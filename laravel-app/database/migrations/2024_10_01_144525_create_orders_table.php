@@ -15,8 +15,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id();
-            $table->string("order_number");
+            $table->string("id")->primary();
             $table->string("name")->comment("消費者名稱");
             $table->string("city")->comment("城市名稱");
             $table->string("district")->comment("行政區名稱");
@@ -24,7 +23,6 @@ return new class extends Migration
             $table->string("currency_type");
             $table->string("currency_id");
             $table->timestamps();
-            $table->unique("order_number");
             $table->unique(["currency_type", "currency_id"]);
         });
 

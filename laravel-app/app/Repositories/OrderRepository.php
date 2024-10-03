@@ -9,7 +9,7 @@ class OrderRepository
 {
     public function create(
         OrderCurrencyInterface $OrderCurrency,
-        string $order_number,
+        string $id,
         string $name,
         string $city,
         string $district,
@@ -17,7 +17,7 @@ class OrderRepository
     ): Order
     {
         $Order = Order::make([
-            "order_number"  => $order_number,
+            "id"            => $id,
             "name"          => $name,
             "city"          => $city,
             "district"      => $district,
@@ -28,8 +28,8 @@ class OrderRepository
         return $Order;
     }
 
-    public function getByOrderNumber(string $orderNumber): ?Order
+    public function get(string $id): ?Order
     {
-        return Order::with("currency")->where("order_number", $orderNumber)->first();
+        return Order::with("currency")->find($id);
     }
 }

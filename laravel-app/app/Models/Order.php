@@ -11,13 +11,17 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        "order_number",
+        "id",
         "name",
         "city",
         "district", 
         "street",
         "currency_type",
         "currency_id"
+    ];
+
+    protected $casts = [
+        "id"=> "string"
     ];
 
     public function currency(): MorphTo

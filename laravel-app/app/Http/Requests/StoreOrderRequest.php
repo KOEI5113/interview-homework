@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Order;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreOrderRequest extends FormRequest
@@ -14,7 +15,7 @@ class StoreOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => 'required|string',
+            'id' => 'required|string|unique:'.Order::class,
             'name' => 'required|string',
             'address.city' => 'required|string',
             'address.district' => 'required|string',

@@ -15,7 +15,7 @@ class ShowOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "order" => 'required|string|exists:'.Order::class.',order_number',
+            "order" => 'required|string|exists:'.Order::class.',id',
         ];
     }
     protected function prepareForValidation()
