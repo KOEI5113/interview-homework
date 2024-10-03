@@ -10,6 +10,25 @@
 - [OrderService](laravel-app/app/Services/OrderService.php) 負責處理與訂單相關的商業邏輯
 - [OrderRepository](laravel-app/app/Repositories/OrderRepository.php) 與 [OrderCurrencyRepository](laravel-app/app/Repositories/OrderCurrencyRepository.php) 分別處理 [Order Model](laravel-app/app/Models/Order.php) 與 [`Order{幣別}`](laravel-app/app/Models/OrderCurrency/) 的資料連線邏輯
 
+## 開放-封閉原則 (Open/Closed Principle, OCP)
+
+> 1. 對於擴展是開放的 — 當需求變更時模組行為可以新增的
+> 2. 對於修改是封閉的 — 當進行擴展時，不需修改既有的程式碼
+
+當新增新的幣別資料表時，不需要異動 [OrderCurrencyRepository](laravel-app/app/Repositories/OrderCurrencyRepository.php)，只需要調整建立幣別表物件的 [OrderCurrencyFactory](laravel-app/app/Factories/OrderCurrencyFactory.php) 即可。
+
+## 里氏替換原則 (Liskov Substitution Principle, LSP)：
+
+> 子類別可以替代父類別而不影響程序的正確性。
+
+例如，所有的 [`Order{幣別}`](laravel-app/app/Models/OrderCurrency/) 類別（如 `OrderTwd`, `OrderUsd`）都實現了 [`BasicCurrency`](laravel-app/app/Models/OrderCurrency/BasicCurrency.php)，可以在需要 OrderCurrencyInterface 的地方替代使用。
+
+介面隔離原則 (Interface Segregation Principle, ISP)：
+使用小而專用的接口來避免不必要的依賴。OrderCurrencyInterface 只包含與貨幣相關的方法，這樣使用者不需要依賴不需要的方法。
+5. 依賴反轉原則 (Dependency Inversion Principle, DIP)：
+高層模組不依賴於低層模組，而是依賴於抽象。例如，OrderService 依賴於 OrderRepository 和 OrderCurrencyRepository 的接口，而不是具體的實現，這樣可以更容易地進行測試和擴展。
+
+使用接口和抽象類別來擴展功能而不修改現有代碼。例如，OrderCurrencyInterface 允許不同的貨幣類別實現相同的接口，這樣可以在不改變其他代碼的情況下添加新的貨幣類別。
 
 # 設計模式的使用
 
