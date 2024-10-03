@@ -16,7 +16,7 @@ class OrderService
     {
     }
 
-    public function createOrder(array $data): Order
+    public function create(array $data): Order
     {
         DB::beginTransaction();
         try {

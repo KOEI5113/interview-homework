@@ -26,6 +26,6 @@ class OrderCreateListener
         OrderCreateEvent $event
     ): void
     {
-        $this->OrderService->createOrder($event->data);
+        $this->OrderService->create($event->data);
     }
 }

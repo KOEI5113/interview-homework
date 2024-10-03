@@ -10,6 +10,12 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = "id";
+
+    protected $keyType = 'string';
+
+    public $incrementing = false;
+
     protected $fillable = [
         "id",
         "name",
@@ -18,10 +24,6 @@ class Order extends Model
         "street",
         "currency_type",
         "currency_id"
-    ];
-
-    protected $casts = [
-        "id"=> "string"
     ];
 
     public function currency(): MorphTo
