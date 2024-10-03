@@ -1,5 +1,15 @@
 # SOILD 原則的使用
 
+## 單一職責原則 (Single Responsibility Principle, SRP)：
+
+> 各個類別單一職責
+
+- [StoreOrderRequest](laravel-app/app/Http/Requests/StoreOrderRequest.php) 負責處理建立訂單的請求內容資料驗證
+- [ShowOrderRequest](laravel-app/app/Http/Requests/ShowOrderRequest.php) 負責處理查詢訂單的請求內容資料驗證
+- [OrderController](laravel-app/app/Http/Controllers/OrderController.php) 負責處理 HTTP 請求並觸發所需的 Service
+- [OrderService](laravel-app/app/Services/OrderService.php) 負責處理與訂單相關的商業邏輯
+- [OrderRepository](laravel-app/app/Repositories/OrderRepository.php) 與 [OrderCurrencyRepository](laravel-app/app/Repositories/OrderCurrencyRepository.php) 分別處理 [Order Model](laravel-app/app/Models/Order.php) 與 [`Order{幣別}`]()
+
 
 # 設計模式的使用
 
@@ -49,7 +59,6 @@ orders ||--|| orders_myr : morphTo
 
 orders {
   INT id PK
-  STRING order_number "訂單編號，用以進行 GET API 查詢"
   STRING user_name "消費者名稱"
   STRING city "城市名稱"
   STRING district "行政區名稱"

@@ -3,11 +3,11 @@
 namespace App\Repositories;
 
 use App\Exceptions\OrderCurrencyUnknownException;
-use App\Models\OrderJpy;
-use App\Models\OrderMyr;
-use App\Models\OrderRmb;
-use App\Models\OrderTwd;
-use App\Models\OrderUsd;
+use App\Models\OrderCurrency\OrderJpy;
+use App\Models\OrderCurrency\OrderMyr;
+use App\Models\OrderCurrency\OrderRmb;
+use App\Models\OrderCurrency\OrderTwd;
+use App\Models\OrderCurrency\OrderUsd;
 use App\Interfaces\OrderCurrencyInterface;
 
 class OrderCurrencyRepository

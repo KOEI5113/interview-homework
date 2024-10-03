@@ -3,11 +3,11 @@
 namespace App\Http\Resources;
 
 use App\Exceptions\OrderCurrencyUnknownException;
-use App\Models\OrderJpy;
-use App\Models\OrderMyr;
-use App\Models\OrderRmb;
-use App\Models\OrderTwd;
-use App\Models\OrderUsd;
+use App\Models\OrderCurrency\OrderJpy;
+use App\Models\OrderCurrency\OrderMyr;
+use App\Models\OrderCurrency\OrderRmb;
+use App\Models\OrderCurrency\OrderTwd;
+use App\Models\OrderCurrency\OrderUsd;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 

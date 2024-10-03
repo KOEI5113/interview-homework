@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\OrderCurrency;
 
 use App\Interfaces\OrderCurrencyInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\OrderCurrencyTrait;
 
-class OrderJpy extends Model implements OrderCurrencyInterface
+class OrderMyr extends Model implements OrderCurrencyInterface
 {
     use HasFactory;
     use OrderCurrencyTrait;
 
-    protected $table = "orders_jpy";
+    protected $table = "orders_myr";
 }
