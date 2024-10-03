@@ -2,15 +2,11 @@
 
 namespace App\Models\OrderCurrency;
 
-use App\Interfaces\OrderCurrencyInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use App\Traits\OrderCurrencyTrait;
 
-class OrderRmb extends Model implements OrderCurrencyInterface
+class OrderRmb extends BasicCurrency
 {
     use HasFactory;
-    use OrderCurrencyTrait;
 
     protected $table = "orders_rmb";
 }

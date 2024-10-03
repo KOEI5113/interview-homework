@@ -3,10 +3,13 @@
 namespace App\Models\OrderCurrency;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class OrderUsd extends BasicCurrency
+class BasicCurrency extends Model
 {
     use HasFactory;
 
-    protected $table = "orders_usd";
+    protected $fillable = [
+        'price'
+    ];
 }

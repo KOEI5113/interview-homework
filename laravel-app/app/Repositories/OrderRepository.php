@@ -2,13 +2,13 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\OrderCurrencyInterface;
 use App\Models\Order;
+use App\Models\OrderCurrency\BasicCurrency;
 
 class OrderRepository
 {
     public function create(
-        OrderCurrencyInterface $OrderCurrency,
+        BasicCurrency $OrderCurrency,
         string $id,
         string $name,
         string $city,
