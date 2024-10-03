@@ -7,7 +7,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
-use App\Models\Order;
 use App\Models\OrderCurrency\OrderJpy;
 use App\Models\OrderCurrency\OrderMyr;
 use App\Models\OrderCurrency\OrderRmb;
@@ -16,7 +15,7 @@ use App\Models\OrderCurrency\OrderUsd;
 use App\Services\OrderService;
 use Illuminate\Support\Facades\Event;
 
-class OrderTest extends TestCase
+class OrderControllerTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
